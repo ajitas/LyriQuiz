@@ -299,20 +299,12 @@ The last snippet is a listener for our users in our firebase database. We store 
 
 <!----------------------------Andrew-------------------------------------------->
 
-<!------------nasib--------------------------------->
-```javascript
-
-```
-## Explanation of code
-
-<!----------------------------nasib-------------------------------------------->
-
 ## Learning points
 <!-- Learning points where you would write what you thought was helpful -->
 1. Working with Github with collaborators was a new learning experience
   * Branching and Merging with master branch
   * Communicating when changes made to master
-2. Agile way of application development
+2. Agile approach of application development
   * Communicationg within group members
   * Updating members every day about the progress
   * Making changes as they came
