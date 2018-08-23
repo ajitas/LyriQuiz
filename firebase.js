@@ -1,12 +1,12 @@
     // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyAuQ0fr-1h-rskTuGynwUWxxptp-HfI0K8",
-        authDomain: "bootcamp-project1-4325b.firebaseapp.com",
-        databaseURL: "https://bootcamp-project1-4325b.firebaseio.com",
-        projectId: "bootcamp-project1-4325b",
-        storageBucket: "bootcamp-project1-4325b.appspot.com",
-        messagingSenderId: "396935707440"
-    };
+  var config = {
+    apiKey: "AIzaSyCyReM-YdixMVFjlHkqf9LW7Q-V_9FF3bo",
+    authDomain: "farley-87f66.firebaseapp.com",
+    databaseURL: "https://farley-87f66.firebaseio.com",
+    projectId: "farley-87f66",
+    storageBucket: "farley-87f66.appspot.com",
+    messagingSenderId: "568494919953"
+  };
     firebase.initializeApp(config);
     var database = firebase.database();
     var userRef = database.ref("/users");
