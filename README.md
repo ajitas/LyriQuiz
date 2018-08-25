@@ -3,14 +3,13 @@
 # Group Project (Lyric-Quiz)
 
 <!-- Put a description of what the project is -->
-We utilized our skillsets in HTML5, CSS3, Javascript, JQuery, Bootstrap, Firebase 
-and AJAX to make a lyrical quiz. The website allows friends to test their knowledge
-of lyrics from the current top 100 songs. 
+Lyric-Quiz is a web application that allows people to log in using their google account and then test their knowledge of the top 100 songs. The quiz game consists of 10 questions and it randomly selects a song and tests the user on a missing word from the lyrics. It keeps a track of the scores and also shows top 3 scores along with the players' aliases.
+We utilized our skillsets in HTML5, CSS3, Javascript, JQuery, Bootstrap, Firebase and AJAX to make this lyrical quiz.
 
 ## Link to deployed site
 <!-- make a link to the deployed site --> 
 <!-- [What the user will see](the link to the deployed site) -->
-[Lyric-Quiz](https://jsutliff.github.io/LyriQuiz/)
+[Lyric-Quiz](https://ajitas.github.io/LyriQuiz/)
 
 <!-- # Images
 <!-- take a picture of the image and add it into the readme  -->
@@ -140,7 +139,12 @@ The above shown code snippet is for making an API call to get back the top chart
     }
     //append the question to the question area on the page
     $("#card-quiz-area .question").html(artist+"<br>"+strOutput);
+```
 
+## Explanation of code
+The above code snippet makes the quiz question and displays it. It makes an AJAX call to API to get the lyrics of the random track selected in the previous code snippet. Once the API returns the lyrics, we take a random portion of 30 contiguous words from the lyrics to be the question for the quiz. Before displaying the question on screen, we remove a random word from the question. We do some checks on the missing word that it has a minimu length of 4, that it should not contain any symbol other than alphabets. Once we find a word that satisfies all the checks, we make this word the missing word player has to guess. We place a blank in place of this missing word. Then we display the question on the screen.
+
+```javascript
 
     //CREATE OPTIONS
     //api call to find similar sounding words as our missing word to create options for quiz
@@ -190,7 +194,12 @@ The above shown code snippet is for making an API call to get back the top chart
         //append the new div to the options area on the page
         $("#card-quiz-area .answer").append(optionDiv);
       }
+```
+## Explanation of code
+The above code snippet makes the options for the question and displays it.It passes the missing word to another API Datamuse to find similar sounding words.
+It picks the first 3 rhyming word from the response and then makes the 4 options(including the 3 from the response and one will be missing word). It shuffles it and shows the options with dynamically created radiobuttons. 
 
+```javascript
       //TIMER
       //clear the timer
       clearInterval(timer);
@@ -214,9 +223,7 @@ The above shown code snippet is for making an API call to get back the top chart
   });
 ```
 ## Explanation of code
-This function makes an API call to get the chart top 100 tracks from musixmatch API. From the response, it gets a random track. It then picks a random porition of length 30 from its lyrics and makes that the question. Before showing the question, it removes a random word from the line and puts a blank in there. 
-It then passes the removed word to another API Datamuse to find similar sounding words.
-It picks the first 3 rhyming word from the response and then makes the 4 options(including the 3 from the response and one will be removed word). It shuffles it and shows the options with dynamically created radiobuttons. As soon as the options appear, a timer for 20 seconds starts. We are also keeping a count of the number of questions and as soon as it reaches 10, we update the score in the database and end the quiz.
+ As soon as the options appear, a timer for 20 seconds starts. We are also keeping a count of the number of questions and as soon as it reaches 10, we update the score in the database and end the quiz.
 <!----------------------------ajita-------------------------------------------->
 
 <!------------Andrew--------------------------------->
