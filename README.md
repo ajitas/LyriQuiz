@@ -54,6 +54,66 @@ We utilized our skillsets in HTML5, CSS3, Javascript, JQuery, Bootstrap, Firebas
 4. And another item. 
 -->
 
+## How it works
+![Lyric-Quiz-Works](images/how-it-works.png)
+
+## APIs used
+1. MusixMatch API
+  * This API takes as input the number of songs (100 in our application) and returns the top chart 100 songs.
+http://api.musixmatch.com/ws/1.1/chart.tracks.get?page_size=100&f_has_lyrics=1&apikey=" + apiKey
+
+The response is in the format:
+{
+ "message": {
+       "body": {
+     "track_list": [{
+      	"track": {
+        	"track_id": 13393441,
+        	"lyrics_id": 6508322,
+        	"track_name": "Someone Like You",
+        	"track_rating": 100,
+        	"album_name": "21",
+        	"album_id": 13395269,
+        	"artist_id": 346898,
+        	"album_coverart_100x100": "http:\/\/api.musixmatch.com\/albumcover\/13395269.jpg",
+        	"artist_name": "Adele"
+      	   }
+    	},
+
+  * We pick the trackID of a random song from the top 100 tracks returned.Then, to get the actual lyrics of the track, we call the API again with "track.lyrics.get"
+
+http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=" + trackId + "&apikey=" + apiKey;
+
+The response is in the format:
+"body": {
+     "lyrics": {
+       "lyrics_id": 7260188,
+       "restricted": 0,
+       "instrumental": 0,
+       "lyrics_body": "Now and then I think of when we were together\r\n...",
+       "lyrics_language": "en",
+       "script_tracking_url": "http:\/\/tracking.musixmatch.com\/t1.0\/m42By\/J7rv9z",
+       "pixel_tracking_url": "http:\/\/tracking.musixmatch.com\/t1.0\/m42By\/J7rv9z6q9he7AA",
+       "lyrics_copyright": "Lyrics powered by www.musiXmatch.com",
+       "backlink_url:" "https://www.musixmatch.com/lyrics/Gotye-feat-Kimbra/Somebody-That-I-Used-to-Know"
+       "updated_time": "2012-04-26T02:09:39Z"
+     }
+
+We just extract the lyrics from lyrics_body. That is what we need to make the quiz.
+
+2. Datamuse API
+This API takes a word and returns rhyming words
+
+http://api.datamuse.com/words/?rel_rhy=" + word
+
+The response is in the format:
+[ { “word": “will”,
+    “score”:2719},
+  { “word": “still”,
+    “score”:2312},
+  { “word": “bill”,
+    “score”:1876}
+]
 
 ## code snippets
 <!-- put snippets of code inside ``` ``` so it will look like code -->
